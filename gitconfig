@@ -1,0 +1,61 @@
+[user]
+    # not good to force this globally, but looks good for me.
+	name = 1ambd4
+	email = dr.chen@mail.ustc.edu.cn
+
+[alias]
+    au = add -u .
+    br = branch
+    bl = blame
+    ci = commit
+    cl = clean -i
+    co = checkout
+    cl = clean -i
+    fm = format-patch
+    ll = log --oneline --graph -n 20
+    ll1d = log --oneline --graph --since=1.days
+    ll1w = log --oneline --graph --since=7.days
+    lv = log -m --simplify-merges --color --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%ar) %Cblue%an <%ae>%Creset' --abbrev-commit --date=relative
+    po = push origin
+    st = status
+    uc = reset --soft HEAD^
+
+    whereis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
+[core]
+    editor = nvim
+    ; pager = delta
+    filemode = false
+    excludesfile = ~/.gitignore_global
+
+[color]
+    interactive = true
+    brach = true
+    status = true
+    
+[diff]
+    colorMoved = default
+    tool = vimdiff
+    tool = bc
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+[merge]
+    ff = no
+    conflictstyle = diff3
+
+[url "https://"]
+    insteadof = git://
+
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
