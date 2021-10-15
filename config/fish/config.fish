@@ -14,3 +14,10 @@ function condaon
     eval /usr/local/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 end
+
+# add clang
+set PATH /Users/lttzz/QT/6.1.1/clang_64/bin $PATH
+
+function rmm 
+    mv $argv ~/.trash/
+end

@@ -100,20 +100,16 @@ map <F5> :call CompileAndRun()<CR>
 func! CompileAndRun()
     exec "w"
     if &filetype == 'c'
-        if !isdirectory('build')
-            execute "!mkdir build"
-        endif
-        exec "!gcc % -std=c17 -o ./build/%<.out"
-        exec "!time ./build/%<.out"
+        exec "!gcc % -std=c11 -Wall -DLOCAL -o %<.o"
+        exec "!time ./%<.o"
     elseif &filetype == 'cpp'
-        if !isdirectory('build')
-            execute "!mkdir build"
-        endif
-        exec "!g++ % -std=c++17 -o ./build/%<.out"
-        exec "!time ./build/%<.out"
+        exec "!g++ % -std=c++11 -Wall -DLOCAL -o %<.o"
+        exec "!time ./%<.o"
     elseif &filetype == 'java'
         exec "!java %"
     elseif &filetype == 'python'
         exec "!time python %"
+    elseif &filetype == 'scheme'
+        exec "!time scheme < %"
     endif
 endfunc
