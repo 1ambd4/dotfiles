@@ -15,12 +15,15 @@ function condaon
 # <<< conda initialize <<<
 end
 
+function rmm
+    mv $argv ~/.trash/
+end
+
 # add clang
 set PATH /Users/lttzz/QT/6.1.1/clang_64/bin $PATH
 
-function rmm 
-    mv $argv ~/.trash/
-end
+# rust
+set PATH /Users/lttzz/.cargo/bin $PATH
 
 alias gcc "gcc-11"
 alias g++ "g++-11"

@@ -100,11 +100,13 @@ map <F5> :call CompileAndRun()<CR>
 func! CompileAndRun()
     exec "w"
     if &filetype == 'c'
-        exec "!gcc % -std=c11 -Wall -DLOCAL -o %<.o"
+        exec "!gcc % -std=c11 -Wall -g -DLOCAL -o %<.o"
         exec "!time ./%<.o"
     elseif &filetype == 'cpp'
-        exec "!g++ % -std=c++11 -Wall -DLOCAL -o %<.o"
+        exec "!g++ % -std=c++11 -Wall -g -DLOCAL -o %<.o"
         exec "!time ./%<.o"
+    elseif &filetype == 'rust'
+        exec "!time cargo run"
     elseif &filetype == 'java'
         exec "!java %"
     elseif &filetype == 'python'
