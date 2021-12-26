@@ -105,6 +105,8 @@ func! CompileAndRun()
     elseif &filetype == 'cpp'
         exec "!g++ % -std=c++11 -Wall -g -DLOCAL -o %<.o"
         exec "!time ./%<.o"
+    elseif &filetype == 'go'
+        exec "!time go run %"
     elseif &filetype == 'rust'
         exec "!time cargo run"
     elseif &filetype == 'java'
