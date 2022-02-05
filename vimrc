@@ -113,7 +113,17 @@ func! CompileAndRun()
         exec "!java %"
     elseif &filetype == 'python'
         exec "!time python %"
-    elseif &filetype == 'scheme'
+    elseif &filetype == 'lisp'
         exec "!time scheme < %"
     endif
 endfunc
+
+"remember last update or view postion"
+ " Only do this part when compiled with support for autocommands
+ if has("autocmd")
+ " When editing a file, always jump to the last cursor position
+ autocmd BufReadPost *
+ \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+ \ exe "normal g'\"" |
+ \ endif
+ endif
