@@ -1,0 +1,15 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    au = add -u .
+    ll = log --oneline --graph
+    d = difftool
+[diff]
+    tool = vimdiff
