@@ -1,14 +1,14 @@
 syntax enable				" 语法高亮
-syntax on				" 允许指定语法高亮配色方案替换默认方案
-" colorscheme molokai			" 配色模式
+syntax on				    " 允许指定语法高亮配色方案替换默认方案
+" colorscheme molokai		" 配色模式
 colorscheme evening			" 配色模式
 let g:rehash256 = 1
 set showmatch				" 括号匹配
 set ignorecase				" 大小写不敏感
 set smartcase				" 只有小写时不敏感否则敏感，搭配上一条一起使用
 set incsearch				" 实时搜索模式
-set number				" Show line number
-set ruler				" 状态栏显示光标当前位置
+set number				    " Show line number
+set ruler				    " 状态栏显示光标当前位置
 set cursorline				" 高亮当前行
 " set cursorcolumn			" 高亮当前列
 set shiftwidth=4			" << 和 >> 命令移动的宽度为4
@@ -22,15 +22,15 @@ set laststatus=2			" 显示状态栏
 " 设置状态栏信息
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ Ln\ %l,\ Col\ %c/%L%)
 set foldenable				" 开启折叠
-" set foldmethod=indent			" 设置基于缩进折叠
-set foldmethod=syntax			" 设置基于语法折叠
-set nofoldenable            		" 启动 vim 时关闭折叠
+" set foldmethod=indent		" 设置基于缩进折叠
+set foldmethod=syntax		" 设置基于语法折叠
+set nofoldenable            " 启动 vim 时关闭折叠
 set foldcolumn=0			" 设置折叠区域的宽度
 set foldlevel=1				" 设置折叠的层数
-set nrformats=              		" 将所有的数字都当成十进制，如007等，否则会被当作八进制解释
+set nrformats=              " 将所有的数字都当成十进制，如007等，否则会被当作八进制解释
 " 使用空格键打开/关闭折叠
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-filetype on				" 开启文件类型检测
+filetype on				    " 开启文件类型检测
 filetype plugin on			" 依据检测到的文件类型动态加载插件
 filetype indent on			" 自适应语言进行只能缩进
 autocmd BufWritePost $MYVIMRC source $MYVIMRC		" 修改.vimrc后立即生效
@@ -41,17 +41,21 @@ set t_Co=256
 
 " ctags
 set tags=tags;
+set tags+=~/.vim/tags/cpp/tags
 set autochdir				" 自动切换当前目录为当前文件所在的目录
+
+set undofile
+set undodir=~/.vim/undo
 
 " compile
 map <F5> :call CompileAndRun()<CR>
 func! CompileAndRun()
     exec "w"
     if &filetype == 'c'
-        exec "!gcc % -std=c11 -Wall -g -DLOCAL -o %<.o"
+        exec "!gcc % -std=c11 -Wall -Werror -g -DLOCAL -o %<.o"
         exec "!time ./%<.o"
     elseif &filetype == 'cpp'
-        exec "!g++ % -std=c++11 -Wall -g -DLOCAL -o %<.o"
+        exec "!g++ % -std=c++11 -Wall -Werror -g -DLOCAL -o %<.o"
         exec "!time ./%<.o"
     elseif &filetype == 'go'
         exec "!time go run %"
