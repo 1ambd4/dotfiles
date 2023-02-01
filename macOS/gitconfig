@@ -1,15 +1,32 @@
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+[user]
+    # not good to force this globally, but looks good for me.
+	name = lttzz
+	email = luckdog.cdr@gmail.com
+
 [alias]
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
     au = add -u .
+    br = branch
+    bl = blame
+    ci = commit
+    cl = clean -i
+    co = checkout
+    cl = clean -i
+    fm = format-patch
     ll = log --oneline --graph
-    d = difftool
+    lv = log -m --simplify-merges --color --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%ar) %Cblue%an <%ae>%Creset' --abbrev-commit --date=relative
+    po = push origin
+    st = status
+    uc = reset --soft HEAD^
+
+    whereis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
+[color]
+    interactive = true
+    brach = true
+    status = true
+
 [diff]
     tool = vimdiff
+
+[url "https://"]
+    insteadof = git://

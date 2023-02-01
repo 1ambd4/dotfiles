@@ -1,16 +1,32 @@
 [user]
+    # not good to force this globally, but looks good for me.
 	name = lttzz
 	email = luckdog.cdr@gmail.com
+
 [alias]
-    st = status
-    ci = commit
+    au = add -u .
     br = branch
+    bl = blame
+    ci = commit
+    cl = clean -i
     co = checkout
-    dt = difftool
-    ll = log --graph --pretty=oneline --abbrev-commit
-[core]
-	editor = vim
+    cl = clean -i
+    fm = format-patch
+    ll = log --oneline --graph
+    lv = log -m --simplify-merges --color --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%ar) %Cblue%an <%ae>%Creset' --abbrev-commit --date=relative
+    po = push origin
+    st = status
+    uc = reset --soft HEAD^
+
+    whereis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
 [color]
-	ui = true
+    interactive = true
+    brach = true
+    status = true
+
 [diff]
     tool = vimdiff
+
+[url "https://"]
+    insteadof = git://
