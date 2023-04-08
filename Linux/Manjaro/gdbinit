@@ -1,0 +1,6 @@
+layout src
+
+set verbose on
+set pagination off
+set debuginfod enabled on
+set disassemble-next-line on

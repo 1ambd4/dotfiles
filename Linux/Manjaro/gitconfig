@@ -13,6 +13,7 @@
     cl = clean -i
     fm = format-patch
     ll = log --oneline --graph
+    ll1d = log --oneline --graph --since=1.days
     lv = log -m --simplify-merges --color --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%ar) %Cblue%an <%ae>%Creset' --abbrev-commit --date=relative
     po = push origin
     st = status
@@ -20,13 +21,26 @@
 
     whereis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 
+[core]
+    pager = delta
+
 [color]
     interactive = true
     brach = true
     status = true
 
+[delta]
+    navigate = true
+
 [diff]
+    colorMoved = default
     tool = vimdiff
+
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = diff3
 
 [url "https://"]
     insteadof = git://
