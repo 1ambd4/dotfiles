@@ -22,16 +22,16 @@
     whereis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 
 [core]
+    editor = vim
     pager = delta
+    filemode = false
+    excludesfile = ~/.gitignore_global
 
 [color]
     interactive = true
     brach = true
     status = true
-
-[delta]
-    navigate = true
-
+    
 [diff]
     colorMoved = default
     tool = vimdiff
@@ -39,7 +39,11 @@
 [interactive]
     diffFilter = delta --color-only
 
+[delta]
+    navigate = true
+
 [merge]
+    ff = no
     conflictstyle = diff3
 
 [url "https://"]
